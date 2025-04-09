@@ -1,5 +1,6 @@
 let todoItems = [];
 
+// Generate unique ID for each task
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -8,6 +9,7 @@ function uuidv4() {
   });
 }
 
+// Render a task in the (ToDo) table with Done & Delete buttons
 function renderTodo(todo) {
   const table = document.getElementById("todo-table");
   const row = table.insertRow(-1);
@@ -24,6 +26,7 @@ function renderTodo(todo) {
   `;
 }
 
+// Create a new task and add it to the list
 function addTodo() {
   const todoText = document.getElementById("todo-id").value;
   const todo = {
@@ -35,6 +38,7 @@ function addTodo() {
   renderTodo(todo);
 }
 
+// Permanently remove a task from the list
 function deleteTodo(id) {
   const found = todoItems.findIndex((todo) => todo.id == id);
   todoItems.splice(found, 1);
@@ -42,6 +46,7 @@ function deleteTodo(id) {
   renderAllTodos();
 }
 
+// Move a task to the (Completed) table
 function markAsDone(id) {
   const index = todoItems.findIndex((todo) => todo.id == id);
   if (index > -1) {
@@ -52,6 +57,7 @@ function markAsDone(id) {
   }
 }
 
+// Add a completed task to the completed table
 function renderCompleted(todo) {
   const table = document.getElementById("completed-table");
   const row = table.insertRow(-1);
@@ -62,12 +68,14 @@ function renderCompleted(todo) {
   dateCell.innerText = todo.date;
 }
 
+// Loop through all current tasks and render them
 function renderAllTodos() {
   for (let i = 0; i < todoItems.length; i++) {
     renderTodo(todoItems[i]);
   }
 }
 
+// Remove all rows from the "ToDo" table before re-rendering
 function deleteAllTodos() {
   let table = document.getElementById("todo-table");
   for (let i = table.rows.length - 1; i > 0; i--) {
