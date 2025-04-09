@@ -9,7 +9,7 @@ function uuidv4() {
   });
 }
 
-// Render a task in the (ToDo) table with Done & Delete buttons
+// Render a task in the (ToDo) table with Done and Delete buttons
 function renderTodo(todo) {
   const table = document.getElementById("todo-table");
   const row = table.insertRow(-1);
@@ -75,7 +75,7 @@ function renderAllTodos() {
   }
 }
 
-// Remove all rows from the "ToDo" table before re-rendering
+// Remove all rows from the (ToDo) table before re-rendering
 function deleteAllTodos() {
   let table = document.getElementById("todo-table");
   for (let i = table.rows.length - 1; i > 0; i--) {
